@@ -30,7 +30,7 @@ public class MemoryPoolProxy {
 
     public MemoryPoolProxy(ProxyClient client, ObjectName poolName) throws java.io.IOException {
         this.client = client;
-        this.objName = objName;
+        this.objName = poolName;
         this.pool = client.getMXBean(poolName, MemoryPoolMXBean.class);
         this.poolName = this.pool.getName();
         this.gcMBeans = new HashMap<ObjectName,Long>();

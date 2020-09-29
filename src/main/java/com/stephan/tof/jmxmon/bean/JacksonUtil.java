@@ -22,10 +22,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class JacksonUtil {
 
 	private static ObjectMapper om = new ObjectMapper();
-//	static {
-//		// 设置输入时忽略JSON字符串中存在而Java对象实际没有的属性
-//		om.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-//	}
+    static {
+        // 设置输入时忽略JSON字符串中存在而Java对象实际没有的属性
+        om.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    }
 
 	private JacksonUtil() {
 	}
@@ -66,7 +66,8 @@ public class JacksonUtil {
 		}
 	}
 	
-	public static Map<String, Object> readMapFromString(String jsonStr) 
+    @SuppressWarnings("unchecked")
+    public static Map<String, Object> readMapFromString(String jsonStr) 
 			throws JsonParseException, JsonMappingException, IOException {
 		return om.readValue(jsonStr, Map.class);
 	}
